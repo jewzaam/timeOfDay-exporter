@@ -42,8 +42,8 @@ def do_timeOfDay(config):
                 begin_night=0
                 if 'results' in data:
                     for key in data['results']:
-                        value = data['results'][key]
-                        if not isinstance(value, str):
+                        value = str(data['results'][key])
+                        if "+" not in value:
                             continue
                         # convert UTC string date to seconds since epoch
                         # example: 2021-08-13T01:42:21+00:00
@@ -92,5 +92,3 @@ if __name__ == '__main__':
         config = yaml.load(f)
     
     do_timeOfDay(config)
-
-# python exporter-timeOfDay.py --port 8001 --config exporter-timeOfDay.yaml
