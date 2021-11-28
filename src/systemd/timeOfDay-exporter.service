@@ -1,0 +1,14 @@
+[Unit]
+Description=TimeOfDay Exporter Service
+Documentation=https://github.com/jewzaam/timeOfDay-exporter/
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=$USER
+Restart=on-failure
+WorkingDirectory=$REPO_BASE_DIR
+ExecStart=$PYTHON $REPO_BASE_DIR/src/py/timeOfDay-exporter.py --port $PORT --config $CONFIG
+
+[Install]
+WantedBy=multi-user.target
