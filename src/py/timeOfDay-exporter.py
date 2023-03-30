@@ -30,7 +30,7 @@ def do_timeOfDay(config):
 
     while True:
         # https://api.sunrise-sunset.org/json?lat=35.605350&lng=-78.793549&formatted=0
-        response = requests.get("https://api.sunrise-sunset.org/json?lat={}&lng={}&formatted=0".format(lat,long))
+        response = requests.get("https://api.sunrise-sunset.org/json?lat={}&lng={}&formatted=0".format(lat,long), verify=False)
 
         if response.status_code != 200 or response.text is None or response.text == '':
             utility.inc("timeOfDay_error_total")
