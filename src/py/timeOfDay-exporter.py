@@ -86,6 +86,6 @@ if __name__ == '__main__':
 
     config = {}
     with open(args.config, 'r') as f:
-        config = yaml.load(f)
+        config = yaml.safe_load(f)
     
     do_timeOfDay(config)
